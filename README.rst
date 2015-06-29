@@ -1,18 +1,13 @@
 .. Copyright (c) Moshe Zadka
    See LICENSE for details.
 
-mainland
---------
+tillage
+-------
 
-The main() for your scripts
+Introduction
+============
 
-.. image:: https://travis-ci.org/moshez/mainland.svg?branch=master
-    :target: https://travis-ci.org/moshez/mainland
-
-.. image:: https://readthedocs.org/projects/mainland/badge/?version=latest
-    :alt: Documentation Status
-    :scale: 100%
-    :target: https://readthedocs.org/projects/mainland/
+TODO
 
 Hacking
 =======

@@ -4,3 +4,4 @@ dropin.cache
 build/
 dist/
 *.egg-info/
+.tillage-oauth

@@ -6,7 +6,7 @@ import sys
 up = os.path.dirname(os.path.dirname(__file__))
 sys.path.append(up)
 
-import mainland as module
+import tillage as module
 
 extensions = [
     'sphinx.ext.autodoc',
