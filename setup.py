@@ -24,7 +24,7 @@ setuptools.setup(
         'Programming Language :: Python :: 3.4',
     ],
     packages=setuptools.find_packages(),
-    install_requires=['six >= 1.9.0', 'mainland'],
+    install_requires=['six >= 1.9.0', 'mainland', 'attrs'],
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
     **module.metadata
