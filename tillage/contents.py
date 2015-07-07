@@ -32,4 +32,33 @@ def getLICENSE(descr):
     year = descr.year
     return 'LICENSE', LICENSE.format(author=author, year=year)
 
-canonical = [getREADME, getLICENSE]
+SETUP="""
+import codecs
+import os
+
+import setuptools
+
+def read(fname):
+    fname = os.path.join(os.path.dirname(__file__), fname)
+    with codecs.open(fname) as fp:
+         return fname.read()
+
+setup(
+    name='{name}',
+    version='0.0.0',
+    author='{author}',
+    author_email = '{authorEmail}',
+    description='{description}',
+    license='MIT',
+    url='https://github.com/{githubID}/{name}',
+    packages=setuptools.find_packages(),
+    long_description=read('README.rst'),
+)
+"""
+
+def getSetupPy(descr):
+    return 'setup.py', SETUP.format(name=descr.name, author=descr.author, authorEmail=descr.authorEmail,
+                                    description=descr.description, githubID=descr.githubID)
+
+
+canonical = [getREADME, getLICENSE, getSetupPy]

@@ -7,7 +7,12 @@ from tillage import contents, description
 class TestContents(unittest.TestCase):
 
     def setUp(self):
-        self.descr = description.Description(name='tillagedemoproject', author='Demo Author', year=1897)
+        self.descr = description.Description(name='tillagedemoproject',
+                                             author='Demo Author',
+                                             authorEmail='demo@example.com',
+                                             description='A project to show how to till',
+                                             year=1897,
+                                             githubID='demo-author')
     ##    myTemp = os.environ['TEMP']
     ##    if not os.path.isdir(myTemp):
     ##        os.mkdir(myTemp)
@@ -32,3 +37,14 @@ class TestContents(unittest.TestCase):
         self.assertEquals(lines[0], 'The MIT License (MIT)')
         self.assertIn(str(self.descr.year), lines[1])
         self.assertIn(self.descr.author, lines[1])
+
+    def test_setup_py(self):
+        self.assertIn(contents.getSetupPy, contents.canonical)
+        name, setup = contents.getSetupPy(self.descr)
+        self.assertEquals(name, 'setup.py')
+        variables = dict(x.strip().strip(',').split('=', 1) for x in setup.splitlines() if '=' in x)
+        self.assertEquals(variables['name'], repr(self.descr.name))
+        self.assertEquals(variables['version'], repr('0.0.0'))
+        self.assertEquals(variables['author'], repr(self.descr.author))
+        self.assertEquals(variables['description'], repr(self.descr.description))
+        self.assertEquals(variables['url'], repr('https://github.com/{}/{}'.format(self.descr.githubID, self.descr.name)))
