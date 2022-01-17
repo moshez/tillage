@@ -1,7 +1,2 @@
-*.pyc
-.coverage
-dropin.cache
-build/
-dist/
-*.egg-info/
-.tillage-oauth
+__pycache__
+/build
